@@ -22,15 +22,17 @@ fi
 BASEDIR=$(dirname $0)
 cd $BASEDIR
 
-files=$(ls -d .*)
+files=$(ls -d $BASEDIR/.*)
 echo "Backuping old files..."
-mkdir $HOME/.old-dotfiles
-mv $files $HOME/.old-dotfiles/
+cd $HOME
+mkdir .old-dotfiles
+mv $files .old-dotfiles/
 
+cd $BASEDIR
 echo "Creating new configuration..."
 for file in $files; do
   echo "Creating symlink for $file"
-  ln -s $file $HOME/$file
+  ln -s $PWD/$file $HOME/$file
 done
 
 echo "Installing oh-my-zsh..."
