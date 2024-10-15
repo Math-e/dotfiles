@@ -19,16 +19,19 @@ else
   echo "Not root/sudo!"
 fi
 
-BASEDIR=$(dirname $0)
+BASEDIR=$(dirname "$0")
+echo "Basedir = $BASEDIR"
 cd $BASEDIR
+BASEDIRABS=$PWD
+files=$(ls -ad .* | grep '^.*[^.git]')
+echo "Files = $files"
 
-files=$(ls -d $BASEDIR/.*)
 echo "Backuping old files..."
 cd $HOME
 mkdir .old-dotfiles
 mv $files .old-dotfiles/
 
-cd $BASEDIR
+cd $BASEDIRABS
 echo "Creating new configuration..."
 for file in $files; do
   echo "Creating symlink for $file"
