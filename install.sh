@@ -19,7 +19,7 @@ else
   echo "Not root/sudo!"
 fi
 
-BASEDIR=($dirname $0)
+BASEDIR=$(dirname $0)
 cd $BASEDIR
 
 files=$(ls .*)
