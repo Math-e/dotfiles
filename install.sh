@@ -16,17 +16,17 @@ if [ "$EUID" = 0 ] ; then
   fi
 
 else
-  echo "Not root/sudo!"
+  echo "Not root/sudo. Cannot install necessary packages."
 fi
 
+# set variables
 BASEDIR=$(dirname "$0")
-echo "Basedir = $BASEDIR"
 cd $BASEDIR
 BASEDIRABS=$PWD
+# get the dotfiles/dotfolders to be copied
 files=$(ls -ad .* | grep '^.*[^.git]')
-echo "Files = $files"
 
-echo "Backuping old files..."
+echo "Backuping old dotfiles..."
 cd $HOME
 mkdir .old-dotfiles
 mv $files .old-dotfiles/
