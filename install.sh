@@ -22,7 +22,7 @@ fi
 BASEDIR=$(dirname $0)
 cd $BASEDIR
 
-files=$(ls .*)
+files=$(ls -d .*)
 echo "Backuping old files..."
 mkdir $HOME/.old-dotfiles
 mv $files $HOME/.old-dotfiles/
